@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RapidFlex - Entregas de Última Milla</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="estilos.css" rel="stylesheet" />
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <style>
+    :root{ --topbar-height:56px; }
+    /* El header de index no muestra banner, los banners viven en las vistas */
+    #site-header { background-image: none !important; height:auto !important; min-height:0 !important; }
+    /* Loader de transiciones */
+    #route-loader {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      top: var(--topbar-height,56px);
+      background: rgba(255,255,255,.6);
+      z-index: 2147483647;
+      opacity: 1;
+      pointer-events: all;
+      transition: opacity .2s ease;
+    }
+    #route-loader.rf-hide { opacity: 0; pointer-events: none; }
+    #route-loader.rf-hidden { display: none !important; }
+    #route-loader::after {
+      content: "";
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 4px solid #00d1b2;
+      border-top-color: transparent;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: rfspin .9s linear infinite;
+    }
+    @keyframes rfspin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    /* Botón "Menú" pequeño y discreto */
+    #btnBackMenu {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #00d1b2;
+      color: #f8fcfb !important;
+      border: 1px solid #def0ed;
+      text-decoration: none;
+      margin-right: 0px;
+    }
+    #btnBackMenu[hidden] { display: none !important; }
+
+    :root{
+  --topbar-height: 40px;
+  --topbar-pad-y: 10px; /* separa los botones del borde superior/inferior */
+}
+
+#topbar{
+  position: fixed;      /* pegado arriba */
+  top: 0; left: 0; right: 0;
+  min-height: var(--topbar-height);
+  padding: var(--topbar-pad-y) 20px;  /* <-- aire vertical */
+  background: #fff;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+  z-index: 10000;
+  box-sizing: border-box;
+}
+      
+    
+    #topbar .nav-logo img {
+      height: 40px; width: auto;
+      margin-top: 0;
+    }
+    #topbar .nav-links { display:flex; align-items:center; gap:16px; }
+    #topbar .nav-links a.btn-cotiza {
+      height: 40px; display:inline-flex; align-items:center; justify-content:center;
+      padding: 0 20px; border-radius: 9999px; font-weight:700; font-size:20px;
+    }
+  
+#app{ padding-top: var(--topbar-height,20px); 
+}
+
+/* Carrusel pegado al nav */
+#app header{
+  height: 500x !important;
+  margin-top: calc(1 * var(--topbar-pad-y, 100px)) !important; /* súbelo */
+  padding-top: 0px !important;
+}
+
+/* Sube un poco el texto */
+#app .hero-text{ top: 12px; }
+
+</style>
+</head>
+<body>
+  <!-- Topbar global y fijo -->
+  <header id="site-header">
+    <nav id="topbar">
+      <div class="nav-logo">
+        <a href="#/menu" aria-label="Ir a inicio">
+          <img src="logo.png" alt="Logo" />
+        </a>
+      </div>
+      <div class="nav-links">
+        <!-- Botón que aparece SOLO fuera del menú -->
+        <a id="btnBackMenu" href="#/menu" class="btn-cotiza">Menú</a>
+        <a href="#/nosotros" class="btn-cotiza" data-view="nosotros">Nosotros</a>
+        <a href="#/servicio" class="btn-cotiza" data-view="servicio">Servicio</a>
+        <a href="javascript:void(0)" class="btn-cotiza" onclick="openModal('modalEmpresa')">Quiero despachar</a>
+        <a href="javascript:void(0)" class="btn-cotiza" onclick="openModal('modalRepartidor')">Quiero ser repartidor</a>
+        
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenedor SPA -->
+  <div id="route-loader" aria-hidden="true"></div>
+  <div id="app" role="main" aria-live="polite"></div>
+
+  <!-- Modales globales: disponibles en TODAS las vistas -->
+  <div id="modalEmpresa" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modalEmpresa')">&times;</span>
+      <h2>Cotización</h2>
+      <form id="empresaForm">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="telefono" placeholder="Teléfono" required>
+        <textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+        <input type="hidden" name="status" value="Nuevo">
+        <button type="submit">Enviar</button>
+        <div class="loader" id="loaderEmpresa"></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modalRepartidor" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('modalRepartidor')">&times;</span>
+      <h2>Registro Repartidor</h2>
+      <form id="repartidorForm">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="telefono" placeholder="Teléfono" required>
+        <textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+        <input type="hidden" name="status" value="Nuevo">
+        <button type="submit">Enviar</button>
+        <div class="loader" id="loaderRepartidor"></div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    
+    
+      
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/56949399570?text=Hola,%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="whatsapp-float" title="Escríbenos por WhatsApp" rel="noopener">
+    <img src="Whatsapapp.png" alt="WhatsApp" />
+  </a>
+    
+    
+    <p>RapidFlex &copy; 2025 - Todos los derechos reservados</p>
+    <div class="redes-sociales">
+      <a href="https://www.instagram.com/rapidflex.flex/" target="_blank"><img src="instagram.png" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@rapid.flex" target="_blank"><img src="tiktok.png" alt="TikTok" /></a>
+      <a href="https://www.facebook.com/profile.php?id=61577021292544" target="_blank"><img src="facebook.png" alt="Facebook" /></a>
+    </div>
+  </footer>
+  <script src="rapiflexd-hero.js"></script>
+  <script src="rapiflexd-script.js"></script>
+  <script src="spa-router.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!location.hash) location.hash = '#/menu';
+      window.SPARouter.init();
+    });
+  </script>
+
+<!-- Config carrusel por defecto (las vistas pueden cambiar este arreglo si quieren) -->
+<script>
+  window.HERO_IMAGES = ['banner.png','logo-tienda.png','logo-circulos.png'];
+  const _ocultar = new Set(['logo-tienda.png','logo-circulos.png']);
+  window.HERO_CAPTIONS = window.HERO_IMAGES.map(n => _ocultar.has(n) ? null : undefined);
+  window.HERO_AUTOPLAY_MS = 5000;
+</script>
+   
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: transparent;
+  color: #333;
+}
+
+.nosotros-seccion {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.titulo-nosotros {
+  text-align: left;
+  font-size: 32px;
+  color: #00d1b2;
+  margin-bottom: 30px;
+  margin-left: 120px;
+}
+
+.contenedor-nosotros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto-nosotros {
+  flex: 1 1 500px;
+  font-size: 18px;
+  line-height: 1.6;
+
+}
+
+.texto-nosotros h2 {
+  text-align: left;
+  
+}
+
+.imagen-nosotros {
+  flex: 1 1 400px;
+}
+
+.imagen-nosotros img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.historia-valores {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.historia h3, .mision-vision h3 {
+  color: #00d1b2;
+}
+
+.historia ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.mision-vision p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .contenedor-nosotros {
+    flex-direction: column;
+  }
+
+  .imagen-nosotros, .texto-nosotros {
+    text-align: center;
+  }
+
+  .texto-nosotros {
+    font-size: 16px;
+  }
+}
+
+.nuestra-historia {
+  text-align: left; /* ← Cambiar de center a left */
+  padding: 60px 5%;
+  background-color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  color: #00d1b2;
+}
+
+.contenedor-historia {
+  max-width: 800px;
+  margin: auto;
+  text-align: justify; /* ← Alineación justificada */
+  margin-left: -70px;
+}
+
+.nuestra-historia h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 30px;
+}
+
+.nuestra-historia p {
+  font-size: 1.2rem;
+  line-height: 0.9;
+  white-space: pre-line;
+  font-family: 'Open Sans', sans-serif;
+  color: #050505;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600;700&display=swap');
+
+/* Importar fuentes Google */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@600;700&display=swap');
+
+/* Sección: Nuestros Valores */
+.nuestros-valores {
+  padding: 60px 5%;
+  background-color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  text-align: left;
+}
+
+.contenedor-valores {
+  max-width: 800px;
+  margin: auto;
+  text-align: justify;
+  margin-left:680px ;
+  margin-top: -540px;
+}
+
+.nuestros-valores h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 30px;
+  color: #00d1b2; /* Verde */
+}
+
+.nuestros-valores p {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  white-space: pre-line;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.verde {
+  color: #00d1b2;
+}
+
+/* Contenedor general para MISIÓN y VISIÓN */
+.bloque-individual {
+  width: 110%;
+  height: 80px;
+  background-color: #00d1b2;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Espacio entre bloques */
+  margin-left: -60px;
+}
+
+.contenido-bloque {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 120%;
+}
+
+/* Ícono solo en Misión */
+.icono-mision {
+  width: 50px;
+  height: 50px;
+}
+
+/* Estilos de texto */
+.bloque-individual h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.bloque-individual p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.barra-decorativa {
+  width: 110%;
+  height: 20px;
+  background-color: #00d1b2;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Espacio entre bloques */
+  margin-left: -60px;
+}
+
+/* === RESPONSIVE: Tablets y Móviles (≤1024px) === */
+@media (max-width: 1024px) {
+  .contenedor-nosotros {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .titulo-nosotros {
+    font-size: 26px;
+    margin-left: 20px;
+    text-align: center;
+  }
+
+  .texto-nosotros,
+  .imagen-nosotros {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .texto-nosotros {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .imagen-nosotros img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .contenedor-historia {
+    margin-left: 0; /* Eliminar margen negativo en móvil */
+    padding: 0 10px;
+  }
+
+  .nuestros-valores {
+    padding: 40px 5%;
+  }
+
+  .contenedor-valores {
+    margin-left: 0; /* Eliminar margen negativo */
+    padding: 0 10px;
+  }
+
+  .bloque-individual {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    margin-left: 0;
+  }
+
+  .contenido-bloque {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .icono-mision {
+    width: 40px;
+    height: 40px;
+  }
+
+  .barra-decorativa {
+    width: 100%;
+    height: 15px;
+    margin-left: 0;
+  }
+
+  .bloque-individual h2,
+  .bloque-individual p {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
+
+.imagen-banner {
+  width: 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: -350px;
+}
+
+.imagen-banner img {
+  width: 100%;
+  max-width: 110%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}

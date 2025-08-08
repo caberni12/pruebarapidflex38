@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios - Rapid Flex</title>
+  <link rel="stylesheet" href="estilos-servicios.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+  <h2 class="titulo-servicio">ELIGE EL SERVICIO QUE MEJOR <br> SE ADAPTA A TU NEGOCIO</h2>
+  <section class="servicios">
+    <div class="tarjeta">
+      <h3>Entrega Flex</h3>
+      <p class="centrado"><span class="icono-servicio icono-box"></span> Ideal para vendedores de <br>Mercado Libre (envíos FLEX).</p>
+      <p class="centrado"><span class=""></span> Retiramos los pedidos desde tu Negocio.</p>
+      <p class="centrado"><span class=""></span> Entrega en menos de 24 hrs dentro de Santiago.</p>
+      <p class="centrado"><span class=""></span> Corte máximo: 15:00 hrs..</p>
+      <p class="centrado"><span class="icono-servicio icono-reloj"></span>Aumenta tu reputación.</p>
+      <p class="centrado"><span class="icono-servicio icono-reloj"></span>Más ventas por velocidad.</p>
+    </div>
+  
+    <div class="tarjeta">
+      <h3>Entrega Turbo Flex</h3>
+      <p class="centrado"><span class="icono-servicio icono-fuego"></span> Pensado para grandes <br> vendedores o tiendas con <br> alta rotación</p>
+      <p class="centrado"><span class=""></span> Entrega aún más rápida y <br> prioritaria.</p>
+      <p class="centrado"><span class=""></span> Corte máximo: 13:00 hrs.</p>
+      <p class="centrado"><span class=""></span>Entregas en un rango de 8kg de tu negocio.</p>
+      <p class="centrado"><span class="icono-servicio icono-zona"></span>   Dejamos un repartidor en tu <br>zona de ventas.</p>
+    </div>
+  
+    <div class="tarjeta">
+      <h3>Entrega Same Day</h3>
+      <p class="centrado"><span class="icono-servicio icono-tienda"></span> Servicio ideal para pymes,<br> tiendas propias y ventas por <br> redes sociales.</p>
+      <p class="centrado"><span class="icono-servicio icono-ventas"></span> Retiro habilitado en tu negocio <br> desde 30 paquetes diarios.</p>
+      <p class="centrado"><span class=""></span>Entrega en menos de 24 hrs  <br> dentro de Santiago.</p>
+    </div>
+  </section>
+  
+  <div class="barra-decorativa"></div>
+  <!-- Sección Empezar -->
+<section class="empezar-seccion">
+  <div class="empezar-contenedor">
+    <div class="empezar-texto">
+      <h2 class="titulo-servicio">Quiero Empezar</h2>
+      <!-- FORMULARIO EN VEZ DEL BOTÓN -->
+      <form id="empresaForm" class="formulario-seccion">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="telefono" placeholder="Teléfono" required>
+        <textarea name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+        <input type="hidden" name="status" value="Nuevo">
+        <button type="submit">Enviar</button>
+        <div class="loader" id="loaderEmpresa" style="display: none;"></div>
+      </form>
+    </div>
+    
+    <div class="empezar-imagen">
+      <img src="33.png" alt="Repartidor listo para despacho">
+    </div>
+  </div>
+</section>
+
+
+ 
+
+<script src="guardar-despachar.js"></script>
+
+</body>
+</html>
